@@ -64,6 +64,16 @@ public class View extends JPanel {
 		// Pinta as imagens dos jogadores.
 		drawImage(g, cpuPlayerImage, model.getCpuPlayer());
 		drawImage(g, humanPlayerImage, model.getHumanPlayer());
+		
+		//Pinta as paredes do labirinto.
+		for(int i=0;i<model.getBoard().getNumRows();i++){
+			for(int j=0;j<model.getBoard().getNumCols();j++){
+				if (model.getBoard().isWall(i, j)==true){
+					g.setColor(Color.BLACK);
+					g.fillRect(j*CELL_SIZE, i*CELL_SIZE, CELL_SIZE, CELL_SIZE);
+				}
+			}
+		}
 
 		// Evita bugs visuais em alguns sistemas operacionais.
 		getToolkit().sync();
